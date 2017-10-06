@@ -35,7 +35,6 @@ def smart_str(s, encoding='utf-8', strings_only=False, errors='strict'):
 
 
 def format_url(params, api_key=None):
-    print(params)
     url = "&".join(['%s=%s' % (key, smart_str(params[key])) for key in sorted(params)])
     if api_key:
         url = '%s&key=%s' % (url, api_key)
@@ -44,16 +43,10 @@ def format_url(params, api_key=None):
 
 def calculate_sign(params, api_key):
     # 签名步骤一：按字典序排序参数, 在string后加入KEY
-    print(params)
     url = format_url(params, api_key)
-    print(api_key)
-    print('url...........'+url)
-    print(url.encode('utf-8'))
     a = hashlib.md5()
     a.update(url.encode('utf-8'))
-    print(a.hexdigest())
     # 签名步骤二：MD5加密, 所有字符转为大写
-    print(hashlib.md5(url.encode('utf-8')).hexdigest().upper())
     return hashlib.md5(url.encode('utf-8')).hexdigest().upper()
 
 
