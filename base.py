@@ -93,19 +93,19 @@ def xml_to_dict(xml):
     return sign, result
 
 
-# def validate_post_xml(xml, appid, mch_id, api_key):
-#     sign, params = xml_to_dict(xml)
-#     if (not sign) or (not params):
-#         return None
-#
-#     remote_sign = calculate_sign(params, api_key)
-#     if sign != remote_sign:
-#         return None
-#
-#     if params["appid"] != appid or params["mch_id"] != mch_id:
-#         return None
-#
-#     return params
+def validate_post_xml(xml, appid, mch_id, api_key):
+    sign, params = xml_to_dict(xml)
+    if (not sign) or (not params):
+        return None
+
+    remote_sign = calculate_sign(params, api_key)
+    if sign != remote_sign:
+        return None
+
+    if params["appid"] != appid or params["mch_id"] != mch_id:
+        return None
+
+    return params
 
 
 def random_str(randomlength=8):
