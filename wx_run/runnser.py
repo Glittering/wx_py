@@ -25,7 +25,7 @@ def method_redirect_url():
 
 @api_view(['GET', 'POST'])
 def place_order(request):
-    order_id = random.randint(10000000, 99999999)
+    order_id = str(random.randint(10000000, 99999999))
 
     if 'HTTP_X_FORWARDED_FOR' in request.META.keys():
         ip = request.META['HTTP_X_FORWARDED_FOR']
