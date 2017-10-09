@@ -42,8 +42,8 @@ def place_order(request):
     # print(eval(res)['return_msg'].encode('utf-8'))
     # print(chardet.detect(res['return_msg']))
     print(res['return_msg'].encode('utf-8'))
-    what = requests.get(res['mweb_url'].encode('utf-8'))
-    return Response(what)
+    # what = requests.get(res['mweb_url'].encode('utf-8'))
+    return Response(res['mweb_url'].encode('utf-8'))
 
 
 # {'return_code': 'SUCCESS', 'return_msg': 'OK', 'trade_type': 'MWEB', 'prepay_id': 'wx201710091320367ceaf4391a0829915306', 'mch_id': '1481242412', 'nonce_str': 'dqhNMjjf2xbPLt9w', 'result_code': 'SUCCESS', 'appid': 'wx0465c5610cb6fdca', 'mweb_url': 'https://wx.tenpay.com/cgi-bin/mmpayweb-bin/checkmweb?prepay_id=wx201710091320367ceaf4391a0829915306&package=3308721725'}
