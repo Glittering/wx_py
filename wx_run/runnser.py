@@ -1,4 +1,5 @@
 # coding: utf-8
+import random
 import urllib.parse
 
 import chardet
@@ -24,6 +25,8 @@ def method_redirect_url():
 
 @api_view(['GET', 'POST'])
 def place_order(request):
+    order_id = random.randint(10000000, 99999999)
+
     if 'HTTP_X_FORWARDED_FOR' in request.META.keys():
         ip = request.META['HTTP_X_FORWARDED_FOR']
     else:
@@ -32,7 +35,7 @@ def place_order(request):
     print(ip)
 
     pay = UnifiedOrderPay('wx0465c5610cb6fdca', '1481242412', '192006250b4c09247ec02edce69f6a2e')
-    res = pay.post(body="111".encode('utf-8', 'ignore'), out_trade_no="23232323", total_fee="1",
+    res = pay.post(body="111".encode('utf-8', 'ignore'), out_trade_no=order_id, total_fee="1",
                    spbill_create_ip=ip,
                    notify_url='api.zgtxcj.com', trade_type='MWEB')
     print(res)
